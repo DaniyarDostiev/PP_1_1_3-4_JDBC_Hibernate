@@ -11,8 +11,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJDBCImpl extends Util implements UserDao {
-    private final Connection connection = super.getConnection();
+public class UserDaoJDBCImpl implements UserDao {
+    private final Util util = Util.getInstance();
+    private final Connection connection = util.getConnection();
 
     public UserDaoJDBCImpl() {
 

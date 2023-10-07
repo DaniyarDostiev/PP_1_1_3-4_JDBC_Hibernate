@@ -9,6 +9,23 @@ public class Util {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
+    private Util() {
+
+    }
+
+    private static volatile Util instance;
+
+    public static Util getInstance() {
+        if (instance == null) {
+            synchronized (Util.class) {
+                if (instance == null) {
+                    instance = new Util();
+                }
+            }
+        }
+        return instance;
+    }
+
     public Connection getConnection() {
         Connection connection;
         try {
