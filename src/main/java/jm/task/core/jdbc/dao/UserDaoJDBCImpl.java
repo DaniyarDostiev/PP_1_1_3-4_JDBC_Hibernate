@@ -22,7 +22,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
         try (Statement statement = connection.createStatement()) {
             statement.execute("""
-                    create table Users
+                    create table if not exists Users
                     (
                     id int primary key auto_increment not null,
                     name varchar(50),
@@ -36,7 +36,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            statement.execute("DROP TABLE Users;");
+            statement.execute("DROP TABLE IF EXISTS Users;");
         } catch (SQLException ignore) {
         }
     }
